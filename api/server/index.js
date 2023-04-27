@@ -13,10 +13,10 @@ import userRouter from "./routes/user.js";
 import chatRoomRouter from "./routes/chatRoom.js";
 import deleteRouter from "./routes/delete.js";
 // middlewares
-import { decode } from './middlewares/jwt.js'
-
-import * as dotenv from 'dotenv-flow' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+import { decode } from './middlewares/jwt.js';
+import * as dotenv from 'dotenv-flow';
 dotenv.config()
+import multer from 'multer';
 
 const app = express();
 
@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/", indexRouter);
 app.use("/users", userRouter);
-app.use("/room", decode, chatRoomRouter);
+app.use("/room",multer().single(), decode, chatRoomRouter);
 app.use("/delete", deleteRouter);
 
 /** catch 404 and forward to error handler */

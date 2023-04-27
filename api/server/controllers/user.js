@@ -43,8 +43,8 @@ export default {
     try {
       const user = await UserModel.deleteByUserById(req.params.id);
       return res.status(200).json({
-        success: true, 
-        message: `Deleted a count of ${user.deletedCount} user.` 
+        success: true,
+        message: `Deleted a count of ${user.deletedCount} user.`
       });
     } catch (error) {
       return res.status(500).json({ success: false, error: error })

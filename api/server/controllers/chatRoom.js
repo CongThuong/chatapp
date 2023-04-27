@@ -11,9 +11,9 @@ export default {
       const validation = makeValidation(types => ({
         payload: req.body,
         checks: {
-          userIds: { 
-            type: types.array, 
-            options: { unique: true, empty: false, stringOnly: true } 
+          userIds: {
+            type: types.array,
+            options: { unique: true, empty: false, stringOnly: true }
           },
           type: { type: types.enum, options: { enum: CHAT_ROOM_TYPES } },
         }
